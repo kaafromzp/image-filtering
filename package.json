@@ -1,6 +1,6 @@
 {
     "name": "image-filtering",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Helps to draw images with different filtering settings",
     "main": "./dist/image-filtering.js",
     "module": "./src/ImageFilteringHelper.js",
