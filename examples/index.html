@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+
+            canvas {
+                top: 0;
+                left: 0;
+                z-index: -1;
+                image-rendering: pixelated;
+            }
+
+            label {
+                margin: 0 8px 0 16px;
+                font-family: Arial;
+                font-size: 14px;
+            }
+
+            select {
+                margin-top: 16px;
+            }
+        </style>
+        <title>Title</title>
+    </head>
+    <body>
+        <div>
+            <h4>Source image</h4>
+            <img src="./images/1.png" id="image" />
+        </div>
+        <script src="../dist/image-filtering.js"></script>
+        <script>
+            let addBlock = (name, canvas) => {
+                divEl = document.createElement('div');
+                h4El = document.createElement('h4');
+                h4El.innerText = name;
+                divEl.appendChild(h4El);
+                divEl.appendChild(canvas);
+                document.body.appendChild(divEl);
+            };
+            let img = document.body.querySelector('#image');
+            let canvas = ImageFilteringHelper.drawImageWithFiltering(
+                384,
+                99,
+                img,
+                ImageFilteringHelper.types.GL_NEAREST
+            );
+            addBlock('ImageFilteringHelper.types.GL_NEAREST', canvas);
+
+            canvas = ImageFilteringHelper.drawImageWithFiltering(
+                384,
+                99,
+                img,
+                ImageFilteringHelper.types.GL_BILINEAR
+            );
+            addBlock('ImageFilteringHelper.types.GL_BILINEAR', canvas);
+
+            canvas = ImageFilteringHelper.drawImageWithFiltering(
+                384,
+                99,
+                img,
+                ImageFilteringHelper.types.GL_BICUBIC_TRIANGULAR
+            );
+            addBlock('ImageFilteringHelper.types.GL_BICUBIC_TRIANGULAR', canvas);
+
+            canvas = ImageFilteringHelper.drawImageWithFiltering(
+                384,
+                99,
+                img,
+                ImageFilteringHelper.types.GL_BICUBIC_BELL
+            );
+            addBlock('ImageFilteringHelper.types.GL_BICUBIC_BELL', canvas);
+
+            canvas = ImageFilteringHelper.drawImageWithFiltering(
+                384,
+                99,
+                img,
+                ImageFilteringHelper.types.GL_BICUBIC_BSPLINE
+            );
+            addBlock('ImageFilteringHelper.types.GL_BICUBIC_BSPLINE', canvas);
+
+            canvas = ImageFilteringHelper.drawImageWithFiltering(
+                384,
+                99,
+                img,
+                ImageFilteringHelper.types.GL_BICUBIC_CATMULLROM
+            );
+            addBlock('ImageFilteringHelper.types.GL_BICUBIC_CATMULLROM', canvas);
+        </script>
+    </body>
+</html>
